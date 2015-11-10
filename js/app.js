@@ -18,6 +18,7 @@ window.GooglePlaces = {
         zoom: 15
     });
     GooglePlaces.service = new google.maps.places.PlacesService(GooglePlaces.map);
+
     var router = new GooglePlaces.Routers.Router({$rootEl: $('div#content')});
     Backbone.history.start();
   }

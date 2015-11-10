@@ -1,4 +1,4 @@
-GooglePlaces.Models.Post = Backbone.Model.extend({
+GooglePlaces.Models.Place = Backbone.Model.extend({
   collection: GooglePlaces.Collections.Places,
 
   defaults: {},
@@ -9,6 +9,6 @@ GooglePlaces.Models.Post = Backbone.Model.extend({
   },
 
   parseTags: function () {
-    
+
   }
 });

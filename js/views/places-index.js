@@ -3,7 +3,6 @@ GooglePlaces.Views.PlacesIndex = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.collection, "add", this.addPlaceItem);
-    $(window).on("resize",this.render.bind(this));
   },
 
   events: {
@@ -22,17 +21,20 @@ GooglePlaces.Views.PlacesIndex = Backbone.View.extend({
   addPlaceItem: function (place) {
     var placeItemView = new GooglePlaces.Views.PlaceItem({model: place});
     $('ul.index-feed').append(placeItemView.render().$el);
-    // this.moveDate(placeItemView);
-    this.resizeTitle(placeItemView);
   },
 
   executeSearch: function () {
     var searchText = $('#search-field').val();
-    GooglePlaces.service.textSearch({query: searchText}, this.parseResults);
+    $('ul.index-feed').empty().html('<i class="fa fa-spinner fa-spin"></i>');
+    GooglePlaces.service.textSearch({query: searchText}, this.parseResults.bind(this));
   },
 
   parseResults: function (results) {
-    debugger;
+    $('ul.index-feed').empty();
+    results.forEach(function(result){
+      var place = new GooglePlaces.Models.Place(result);
+      this.addPlaceItem(place);
+    }.bind(this));
   },
 
   // moveDate: function (view) {
@@ -59,10 +61,4 @@ GooglePlaces.Views.PlacesIndex = Backbone.View.extend({
   //   }
   //   view.$el.find('span.title-span').text(title);
   // },
-
-  remove: function() {
-    $(window).off("resize",this.resizeList);
-    //call the superclass remove method to ensure event handler is unbound
-    Backbone.View.prototype.remove.apply(this, arguments);
-  }
 });

@@ -4,35 +4,29 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Backbone.js • Google Places</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/index.css">
 </head>
 <body>
 
   <script type="text/template" id="feed-item-template">
-    <div class="index-item-container">
-      <div class="index-item-image">
-        <a href="#posts/<%= post.get('author_id') + '_' + post.get('rawDate') %>"><img src="<%= post.get('image_url') %>" alt="" /></a>
-      </div>
-      <div class="index-item-content">
-        <div class="index-item-title">
-          <a href="#posts/<%= post.get('author_id') + '_' + post.get('rawDate') %>"><span class="title-span">Content</span></a>
+    <a href="https://www.google.com/maps/place/<%= place.get('formatted_address') %>">
+      <div class="index-item-container">
+        <div class="index-item-image">
+          <img src="<%= place.get('icon') %>" alt="" />
         </div>
-        <div class="index-item-info-bar">
-          <div class="author-name">
-            <a href="https://www.flickr.com/photos/<%= post.get('author_id')%>"><%= post.get('author') %></a>
+        <div class="index-item-content">
+          <div class="index-item-title">
+            <span class="title-span"><%= place.get('name') %></span>
           </div>
-          <div class="published-date">
-            <%= post.get('published') %>
-          </div>
-          <div class="view-on-flickr">
-            <a href="<%= post.get('link') %>">View on Flickr</a>
+          <div class="index-item-info-bar">
+            <div class="address">
+              <%= place.get('formatted_address') %>
+            </div>
           </div>
         </div>
       </div>
-      <div class="hidden">
-        <%= post.get('title') %>
-      </div>
-    </div>
+    </a>
   </script>
 
   <!-- <script type="text/template" id="post-show-template">
