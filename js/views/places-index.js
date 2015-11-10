@@ -3,6 +3,13 @@ GooglePlaces.Views.PlacesIndex = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.collection, "add", this.addPlaceItem);
+    $(document).on('keydown', this.handleKey.bind(this));
+  },
+
+  handleKey: function (event) {
+    if (event.keyCode === 13) {
+      this.executeSearch();
+   }
   },
 
   events: {
