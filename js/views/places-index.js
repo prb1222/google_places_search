@@ -38,6 +38,10 @@ GooglePlaces.Views.PlacesIndex = Backbone.View.extend({
 
   parseResults: function (results) {
     $('ul.index-feed').empty();
+    if (!results.length) {
+      $('ul.index-feed').html("<div class='center'>No results found.</div>");
+      return;
+    }
     results.forEach(function(result){
       var place = new GooglePlaces.Models.Place(result);
       this.addPlaceItem(place);
