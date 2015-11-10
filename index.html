@@ -12,14 +12,12 @@
   <script type="text/template" id="feed-item-template">
     <a href="https://www.google.com/maps/place/<%= place.get('formatted_address') %>">
       <div class="index-item-container">
-        <div class="index-item-image">
-          <img src="<%= place.get('icon') %>" alt="" />
-        </div>
         <div class="index-item-content">
           <div class="index-item-title">
             <span class="title-span"><%= place.get('name') %></span>
           </div>
           <div class="index-item-info-bar">
+            <img src="<%= place.get('icon') %>" >
             <div class="address">
               <%= place.get('formatted_address') %>
             </div>
@@ -29,49 +27,12 @@
     </a>
   </script>
 
-  <!-- <script type="text/template" id="post-show-template">
-    <div class="post-show-container">
-      <div class="post-show-header">
-        <div class="post-title-container">
-          <div class="post-title">
-            <a href="<%= post.get('image_url') %>"><%= post.get('title') %></a>
-          </div>
-          <div class="back-button-container">
-            <a href="#">Back</a>
-          </div>
-        </div>
-        <div class="sub-header-info">
-          <div class="author-name">
-            <a href="https://www.flickr.com/photos/<%= post.get('author_id')%>"><%= post.get('author') %></a>
-          </div>
-          <div class="spacer">
-            |
-          </div>
-          <div class="published-date">
-            <%= post.get('published') %>
-          </div>
-        </div>
-      </div>
-      <div class="post-show-content">
-        <div class="post-show-image">
-          <img src="<%= post.get('image_url') %>" alt="" />
-        </div>
-        <div class="post-show-text-container">
-          <div class="post-show-description">
-            <%= post.get('description') %>
-          </div>
-          <div class="post-show-tags">
-            Tags: <%= post.parseTags() %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </script> -->
-
   <script type="text/template" id="index-template">
     <div class="index-container">
-      <input type="text" id="search-field">
-      <input type="submit" id="submit-button">
+      <div class="search-field-container">
+        <input type="text" id="search-field">
+        <input type="submit" id="submit-button">
+      </div>
       <ul class="index-feed"></ul>
     </div>
   </script>
