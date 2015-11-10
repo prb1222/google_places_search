@@ -1,4 +1,4 @@
-FlickrFeed.Views.PostItem = Backbone.View.extend({
+GooglePlaces.Views.PlaceItem = Backbone.View.extend({
   template: _.template($('#feed-item-template').html()),
 
   tagName: "li",
@@ -10,7 +10,7 @@ FlickrFeed.Views.PostItem = Backbone.View.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({post: this.model}));
+    this.$el.html(this.template({place: this.model}));
     return this;
   }
 });

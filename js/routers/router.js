@@ -1,4 +1,4 @@
-FlickrFeed.Routers.Router = Backbone.Router.extend({
+GooglePlaces.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
   },
@@ -9,9 +9,8 @@ FlickrFeed.Routers.Router = Backbone.Router.extend({
   },
 
   index: function () {
-    this.postsCollection = this.postsCollection || new FlickrFeed.Collections.Posts();
-    if (!this.postsCollection.length) {this.postsCollection.fetch();}
-    var view = new FlickrFeed.Views.PostsIndex({collection: this.postsCollection});
+    this.placesCollection = this.placesCollection || new GooglePlaces.Collections.Places();
+    var view = new GooglePlaces.Views.PlacesIndex({collection: this.placesCollection});
     this.swapView(view);
   },
 
@@ -22,16 +21,16 @@ FlickrFeed.Routers.Router = Backbone.Router.extend({
     view.render();
   },
 
-  postShow: function(id) {
-    var parsedId = this.parseId(id);
-    var author_id = parsedId[0];
-    var rawDate = parsedId[1];
-    var post = this.postsCollection.get(author_id + '_' + rawDate);
-    var view = new FlickrFeed.Views.PostShow({model: post});
-    this.swapView(view);
-  },
-
-  parseId: function(id) {
-    return id.split("_");
-  }
+  // postShow: function(id) {
+  //   var parsedId = this.parseId(id);
+  //   var author_id = parsedId[0];
+  //   var rawDate = parsedId[1];
+  //   var post = this.postsCollection.get(author_id + '_' + rawDate);
+  //   var view = new GooglePlaces.Views.PostShow({model: post});
+  //   this.swapView(view);
+  // },
+  //
+  // parseId: function(id) {
+  //   return id.split("_");
+  // }
 })
